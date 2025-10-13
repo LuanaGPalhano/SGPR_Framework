@@ -1,0 +1,35 @@
+<html lang="pt-br">
+  <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, inital-scale=1.0">
+    <title>Diário Alimentar</title>
+    <link rel="stylesheet" href="diarioalimentar.css">
+  </head>
+
+  <body class="areaTexto">
+    <div class="pagina">
+
+      <div class="ajuste">
+        <p>O que deseja dizer?</p>
+        <textarea placeholder="Coloque seus pensamentos aqui"></textarea>
+        <button id="salvarConteudo">Salvar</button>
+      </div>
+
+      <div class="adicionaRefeicoes">
+        <!--ADICAO DE IMAGEM-->
+        <img src="cameraIcone.png" class="icone" id="iconePadrao">
+        <input type="file" id="adicaoImagem" accept="image/*" hidden>
+        <button id="btImagem">Adicionar imagem</button>
+      <!--ADICAO DE REFEICOES DO DIA-->
+      <div class="areaRefeicoes">
+            <input type="text" id="refeicaoInput" placeholder="Adicione sua refeição">
+            <button class="bt1" id="botAdiciona" type="button">+</button>
+            <div id="listaRefeicoes"></div>
+          </div>
+      </div>
+    </div>
+     
+    <script src="campotexto.js"></script>
+  </body>
+
+</html>

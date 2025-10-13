@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Nutricional - Login</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+<div class="login-container">
+    <form id="formLogin" class="login-box">
+        <h3>Identifique-se:</h3>
+
+        <label for="login">Login</label>
+        <small>Digite seu usuário para acessar sua conta</small>
+        <input type="text" id="login" name="login" required>
+
+        <label for="senha">Senha</label>
+        <small>Digite sua senha atual</small>
+        <input type="password" id="senha" name="senha" required>
+
+        <button type="submit" class="btn-acessar">Acessar</button>
+
+        <p class="termos">
+            <a href="#">Termo de Uso</a> e
+            <a href="#">Aviso de Privacidade</a>
+        </p>
+    </form>
+
+    <div class="perfil-opcao">
+        <div class="card" onclick="window.location.href='paciente.html'">
+            <img src="paciente.png" alt="Paciente">
+            <p>Paciente</p>
+        </div>
+        <div class="card" onclick="window.location.href='nutricionista.html'">
+            <img src="nutricionista.png" alt="Nutricionista">
+            <p>Nutricionista</p>
+        </div>
+    </div>
+</div>
+
+<script src="login.js"></script>
+</body>
+</html>

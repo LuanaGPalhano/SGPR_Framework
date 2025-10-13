@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sugestão de Cardápio</title>
+    <link rel="stylesheet" href="cardapio.css">
+</head>
+<body>
+<div class="chat-container">
+    <header class="chat-header">
+        <h1>Assistente Nutricional Inteligente</h1>
+        <a href="TelaPrincipalPac.html" class="back-button">Voltar</a>
+    </header>
+
+    <div class="chat-messages" id="chat-messages">
+    </div>
+
+    <div class="loading-indicator" id="loading-indicator" style="display: none;">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <footer class="chat-footer">
+        <form id="chat-form" class="chat-form">
+            <input type="text" id="message-input" placeholder="Digite sua mensagem..." autocomplete="off" required>
+            <button type="submit" id="send-button">Enviar</button>
+        </form>
+    </footer>
+</div>
+
+<script src="cardapio.js"></script>
+</body>
+</html>

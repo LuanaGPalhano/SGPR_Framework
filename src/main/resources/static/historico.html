@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Histórico do Paciente</title>
+    <style>
+        /* Estilos gerais */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        /* Fundo com gradiente circular */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 50%;
+            left: 0%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at left center, #E9FFF1, #006400); /* gradiente verde */
+            clip-path: circle(50% at 25% 50%);
+            transform: translateY(-50%);
+            z-index: -1;
+        }
+
+        /* Layout do formulário */
+        .container {
+            position: relative;
+            max-width: 600px; /* Aumentei a largura para caber mais campos */
+            margin: 3% auto;
+            padding: 2rem;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        h2 {
+            text-align: center;
+            color: #006400;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Campos do formulário */
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-sizing: border-box; /* Garante que padding não afete a largura total */
+        }
+        
+        textarea {
+            resize: vertical; /* Permite que o usuário ajuste a altura */
+            min-height: 80px;
+        }
+
+        /* Estilo para os Radio Buttons */
+        .radio-group {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        
+        .radio-group label {
+            font-weight: normal;
+        }
+
+        /* Botões */
+        .buttons {
+            display: flex;
+            justify-content: flex-end;
+            gap: 15px;
+            margin-top: 2rem;
+        }
+
+        .btn-cancelar, .btn-salvar {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .btn-cancelar {
+            background-color: #f1f1f1;
+            color: #333;
+            border: 1px solid #ccc;
+        }
+
+        .btn-salvar {
+            background-color: #006400;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>Anamnese do Paciente</h2>
+    <form id="formHistorico">
+        
+        <input type="hidden" id="pacienteId" name="pacienteId" value="1">
+
+        <div class="form-group">
+            <label for="estadoCivil">Estado Civil</label>
+            <select id="estadoCivil" name="estadoCivil" required>
+                <option value="" disabled selected>Selecione...</option>
+                <option value="Solteiro(a)">Solteiro(a)</option>
+                <option value="Casado(a)">Casado(a)</option>
+                <option value="Divorciado(a)">Divorciado(a)</option>
+                <option value="Viúvo(a)">Viúvo(a)</option>
+                <option value="União Estável">União Estável</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="ocupacao">Ocupação</label>
+            <input type="text" id="ocupacao" name="ocupacao" placeholder="Ex: Professor, Desenvolvedor, etc." required>
+        </div>
+
+        <div class="form-group">
+            <label for="alergias">Alergias (Alimentares ou outras)</label>
+            <textarea id="alergias" name="alergias" placeholder="Descreva as alergias do paciente..."></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="medicamentos">Medicamentos em uso</label>
+            <textarea id="medicamentos" name="medicamentos" placeholder="Liste os medicamentos de uso contínuo..."></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="suplementacao">Suplementação</label>
+            <textarea id="suplementacao" name="suplementacao" placeholder="Liste os suplementos que o paciente utiliza..."></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="historicoFamiliar">Histórico Familiar de Doenças</label>
+            <textarea id="historicoFamiliar" name="historicoFamiliar" placeholder="Ex: Diabetes tipo 2 na família materna..."></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="outrasCondicoes">Outras Condições de Saúde</label>
+            <textarea id="outrasCondicoes" name="outrasCondicoes" placeholder="Qualquer outra condição relevante..."></textarea>
+        </div>
+        
+        <div class="form-group">
+            <label>Consome bebidas alcoólicas?</label>
+            <div class="radio-group">
+                <label><input type="radio" name="bebe" value="true"> Sim</label>
+                <label><input type="radio" name="bebe" value="false" checked> Não</label>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label>É fumante?</label>
+            <div class="radio-group">
+                <label><input type="radio" name="fuma" value="true"> Sim</label>
+                <label><input type="radio" name="fuma" value="false" checked> Não</label>
+            </div>
+        </div>
+
+        <div class="buttons">
+            <a href="pagina-anterior.html" class="btn-cancelar">Cancelar</a>
+            <button type="submit" class="btn-salvar">Salvar Histórico</button>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

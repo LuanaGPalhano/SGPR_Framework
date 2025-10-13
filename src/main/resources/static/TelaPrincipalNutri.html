@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Nutricional - Login</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+<div class="login-container">
+    <form id="formNutri" class="nutri-box">
+    <div class="perfil-opcao">
+        <div class="card" onclick="window.location.href='FichaIndividual.html'">
+            <img src="ficha.png" alt="Ficha">
+            <p>Ficha Individual</p>
+        </div>
+        <div class="card" onclick="window.location.href='CadastrarDieta.html'">
+            <img src="dieta.png" alt="Dieta">
+            <p>Cadastrar Dieta</p>
+        </div>
+        <div class="card" onclick="window.location.href='Progresso.html'">
+            <img src="acompanhar.png" alt="progresso">
+            <p>Acompanhar Progresso</p>
+        </div>
+        <div class="card" onclick="window.location.href='Diario.html'">
+            <img src="diario.png" alt="Diario">
+            <p>Diário Alimentar</p>
+        </div>
+    </div>
+        </br>
+        <button type="button" id="btnSair" class="btn-acessar">Sair</button>
+
+    </form>
+</div>
+<script>
+    const btnSair = document.getElementById("btnSair");
+    btnSair.addEventListener("click", function() {
+        const confirmar = confirm("Você tem certeza que deseja sair?");
+
+        if (confirmar) {
+            window.location.href = "login.html";
+        }
+    });
+</script>
+<script src="login.js"></script>
+</body>
+</html>
