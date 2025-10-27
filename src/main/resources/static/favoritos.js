@@ -98,10 +98,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // ==========================================================
-    // >>>>> EVENT DELEGATION PARA EVITAR MÚLTIPLOS LISTENERS <<<<<
-    // ==========================================================
-    // Adiciona UM ÚNICO listener ao container pai
     favoritosContainer.addEventListener('click', (event) => {
         // Verifica se o elemento clicado TEM a classe 'delete-button'
         if (event.target.classList.contains('delete-button')) {
@@ -114,6 +110,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --- Execução Inicial ---
-    carregarFavoritos(); 
+    carregarFavoritos();
 
 });

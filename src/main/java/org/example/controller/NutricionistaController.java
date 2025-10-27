@@ -1,6 +1,8 @@
 package org.example.controller;
 
-import org.example.model.Nutricionista;
+import org.example.DTO.NutricionistaCadastroRequest; // Importar DTO de request
+import org.example.DTO.NutricionistaResponse;       // Importar DTO de response
+import org.example.model.Nutricionista; // Não é mais necessário para este método
 import org.example.service.NutricionistaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,9 +20,10 @@ public class NutricionistaController {
         this.nutricionistaService = nutricionistaService;
     }
 
-    @PostMapping("/cadastro") // Endpoint específico para cadastro
-    public ResponseEntity<Nutricionista> cadastrar(@RequestBody Nutricionista nutricionista) {
-        Nutricionista salvo = nutricionistaService.cadastrar(nutricionista);
+    @PostMapping("/cadastro")
+
+    public ResponseEntity<NutricionistaResponse> cadastrar(@RequestBody NutricionistaCadastroRequest dados) {
+        NutricionistaResponse salvo = nutricionistaService.cadastrar(dados);
         return ResponseEntity.status(HttpStatus.CREATED).body(salvo);
     }
 }

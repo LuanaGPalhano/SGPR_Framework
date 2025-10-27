@@ -1,5 +1,3 @@
-// Espera que todo o conteúdo da página (HTML) seja carregado antes de executar o script.
-// Todo o nosso código deve ficar dentro deste bloco.
 document.addEventListener('DOMContentLoaded', () => {
 
     // --- 1. Seleção dos Elementos ---
@@ -16,11 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- 3. Definição das Funções ---
 
-    /**
-     * Exibe uma mensagem na tela do chat.
-     * @param {string} text - O texto da mensagem.
-     * @param {string} sender - Quem enviou ('user' ou 'assistant').
-     */
     function displayMessage(text, sender) {
         const messageElement = document.createElement('div');
         messageElement.classList.add('message', sender);
@@ -29,18 +22,10 @@ document.addEventListener('DOMContentLoaded', () => {
         chatMessages.scrollTop = chatMessages.scrollHeight; // Rola para o final
     }
 
-    /**
-     * Mostra ou esconde o indicador de "carregando".
-     * @param {boolean} show - `true` para mostrar, `false` para esconder.
-     */
     function toggleLoading(show) {
         loadingIndicator.style.display = show ? 'flex' : 'none';
     }
 
-    /**
-     * Envia uma mensagem para o backend e exibe a resposta.
-     * @param {string} message - A mensagem a ser enviada.
-     */
     async function sendMessageToBackend(message) {
         messageInput.disabled = true;
         sendButton.disabled = true;
@@ -73,9 +58,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    /**
-     * Inicia a conversa, buscando a primeira mensagem do assistente.
-     */
     async function initializeChat() {
         // Envia uma "mensagem inicial" especial para o backend saber que é o começo da conversa.
         await sendMessageToBackend("__INITIAL_MESSAGE__");
@@ -95,7 +77,5 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // CHAMA A FUNÇÃO PARA INICIAR O CHAT - Esta é a linha que provavelmente causou o erro.
-    // Ela deve estar DENTRO do 'DOMContentLoaded' para que a função já tenha sido definida.
     initializeChat();
 });
