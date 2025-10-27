@@ -14,24 +14,44 @@ document.getElementById("formPaciente").addEventListener("submit", function(even
 
     const paciente = { nome, cpf, email, senha };
 
-    fetch("http://localhost:8080/api/cadastrar/paciente", {
+    fetch("http://localhost:8080/api/pacientes/cadastro", { // URL CORRIGIDA
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(paciente)
     })
         .then(response => {
-            if (response.ok) {
-                alert("Cadastro realizado com sucesso!");
-                window.location.href = "login.html"; // volta para login
-            } else {
-                return response.text().then(msg => {
-                    throw new Error(msg || "Erro ao cadastrar paciente!");
-                });
+            if (!response.ok) {
+                const status = response.status;
+
+                return response.json()
+                    .then(errorData => {
+                        let detailedMessage = errorData.message || `Erro ${status}`; // Pega a msg do ErrorResponse
+                        if (status === 409) {
+                            detailedMessage = errorData.message || "CPF já cadastrado. Verifique os dados."; // Usa a msg do backend ou um fallback claro
+                        }
+                        throw new Error(detailedMessage);
+                    })
+                    .catch(() => {
+                        if (status === 409) {
+                            throw new Error("CPF já cadastrado.");
+                        } else if (status === 400) {
+                            throw new Error("Requisição inválida. Verifique os dados enviados.");
+                        } else if (status === 500) {
+                            throw new Error("Erro interno no servidor. Tente novamente mais tarde.");
+                        } else {
+                            throw new Error(`Erro ${status}. Não foi possível completar o cadastro.`);
+                        }
+                    });
             }
+            return response.json();
+        })
+        .then(pacienteCriado => {
+            alert("Cadastro realizado com sucesso!");
+            window.location.href = "login.html";
         })
         .catch(error => {
-            alert("Erro: " + error.message);
-            console.error(error);
+            alert("Erro no cadastro: " + error.message);
+            console.error("Detalhes do erro de cadastro:", error);
         });
 });
 

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meus Cardápios Favoritos</title>
+    <link rel="stylesheet" href="favoritos.css">
+    <style>
+        /* Estilos básicos para demonstração - Mova para favoritos.css */
+        body { font-family: sans-serif; margin: 0; background-color: #f4f4f4; }
+        .container { max-width: 800px; margin: 20px auto; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        .favoritos-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 20px; }
+        .back-button { padding: 8px 15px; background-color: #5cb85c; color: white; text-decoration: none; border-radius: 5px; font-size: 0.9em; }
+        .back-button:hover { background-color: #4cae4c; }
+        #favoritos-container .favorito-item { border: 1px solid #ddd; border-radius: 5px; padding: 15px; margin-bottom: 15px; background-color: #f9f9f9; }
+        #favoritos-container .favorito-item h4 { margin-top: 0; color: #337ab7; }
+        #favoritos-container .favorito-item p { margin-bottom: 5px; line-height: 1.6; }
+        #favoritos-container .favorito-item small { color: #777; font-size: 0.8em; }
+        #loading-message { text-align: center; color: #888; }
+        .no-favorites { text-align: center; color: #888; padding: 20px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header class="favoritos-header">
+        <h1>Meus Cardápios Favoritos</h1>
+        <a href="TelaPrincipalPac.html" class="back-button">Voltar</a>
+    </header>
+
+    <main>
+        <div id="loading-message">Carregando seus favoritos...</div>
+        <div id="favoritos-container">
+        </div>
+    </main>
+</div>
+
+<script src="favoritos.js"></script>
+
+</body>
+</html>

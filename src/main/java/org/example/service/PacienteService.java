@@ -2,6 +2,7 @@ package org.example.service;
 
 import org.example.DTO.PacienteCadastroRequest;
 import org.example.DTO.PacienteResponse;
+import org.example.exception.DuplicateResourceException;
 import org.example.model.Paciente;
 import org.example.repository.PacienteRepository;
 import org.springframework.stereotype.Service;
@@ -18,10 +19,13 @@ public class PacienteService {
     }
 
     public PacienteResponse cadastrar(PacienteCadastroRequest dados) {
+        // Verifica se CPF já existe
         if (repository.findByCpf(dados.cpf()).isPresent()) {
-            throw new IllegalArgumentException("CPF já cadastrado!");
+            // Lança a exceção específica
+            throw new DuplicateResourceException("CPF já cadastrado!");
         }
 
+        // Cria e salva o novo paciente
         Paciente novoPaciente = new Paciente();
         novoPaciente.setNome(dados.nome());
         novoPaciente.setCpf(dados.cpf());

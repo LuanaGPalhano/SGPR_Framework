@@ -45,10 +45,11 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers(
                                 "/api/auth/**",
-                                "/api/cadastrar/**",
-                                "/api/nutricionistas/**",
+                                "/api/pacientes/cadastro**",
+                                "/api/nutricionistas/cadastro**",
                                 "/diario/**",
-                                "/api/chat/**" // Permite acesso aos endpoints do chat
+                                "/api/chat/**",
+                                "/api/favoritos/**"
                         ).permitAll()
                         .anyRequest().authenticated()
                 );
