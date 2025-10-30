@@ -22,14 +22,14 @@ public class NutricionistaService {
     public NutricionistaResponse cadastrar(NutricionistaCadastroRequest dados) {
 
         // Validação usa o dado do DTO (CrnUf com 'C' maiúsculo, como no seu DTO)
-        if (repository.findByCrnUf(dados.CrnUf()).isPresent()) {
+        if (repository.findByCrnUf(dados.crnUf()).isPresent()) {
             throw new DuplicateResourceException("CRN já cadastrado!");
         }
 
         // Mapeia manualmente do DTO para a Entidade
         Nutricionista novaNutricionista = new Nutricionista();
         novaNutricionista.setNome(dados.nome());
-        novaNutricionista.setCrnUf(dados.CrnUf());
+        novaNutricionista.setCrnUf(dados.crnUf());
         novaNutricionista.setEmail(dados.email());
 
         // Criptografa a senha

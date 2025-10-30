@@ -16,11 +16,16 @@ public class DiarioAlimentar {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String texto;
+
+    @Builder.Default
+    private java.time.LocalDateTime registroHorario = java.time.LocalDateTime.now();
+
     @Lob
     @Column(columnDefinition = "LONGTEXT")
     private String imgURL;
 
     @OneToMany(mappedBy = "diario" ,cascade = CascadeType.ALL, orphanRemoval = true)
     @Builder.Default
-    private List<Refeicoes> refeicoes = new java.util.ArrayList<>();
+    private List<EntradaDiario> entradasDiario = new java.util.ArrayList<>();
 }

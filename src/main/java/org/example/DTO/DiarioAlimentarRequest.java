@@ -3,7 +3,8 @@ package org.example.DTO;
 import lombok.*;
 import java.util.List;
 
-import org.example.model.Refeicoes;
+import org.example.model.EntradaDiario;
+import org.example.model.EntradaDiario;
 
 @Data
 @AllArgsConstructor
@@ -11,5 +12,5 @@ import org.example.model.Refeicoes;
 public class DiarioAlimentarRequest {
     private String texto;
     private String imgURL;
-    private List<Refeicoes> refeicoes;
+    private List<EntradaDiario> entradas;
 }
