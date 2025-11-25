@@ -19,7 +19,7 @@ public class EducadorFisico extends Profissional {
         return "EDUCADOR_FISICO";
     }
 
-    // Relacionamentos específicos (Dieta, etc) continuam aqui...
+    // Relacionamentos específicos (Treino, etc) 
     @OneToMany(mappedBy = "educadorFisico", cascade = CascadeType.ALL)
     private java.util.List<Treino> treinos;
 }
