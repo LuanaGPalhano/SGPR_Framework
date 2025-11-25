@@ -19,7 +19,7 @@ public class Psicologo extends Profissional {
         return "PSICOLOGO";
     }
 
-    // Relacionamentos específicos (Dieta, etc) 
+    // Relacionamentos específicos (Plano, etc) 
     @OneToMany(mappedBy = "psicologo", cascade = CascadeType.ALL)
     private java.util.List<PlanoTerapeutico> planoTerapeuticos;
 }
