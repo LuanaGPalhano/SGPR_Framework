@@ -17,9 +17,6 @@ public class Treino extends Plano { // Herda de Plano (que tem ID, objetivo, etc
     @Column(columnDefinition = "TEXT")
     private String descricaoExercicios;
 
-    // --- O CAMPO QUE FALTAVA ---
-    // Este nome de variável "educadorFisico" deve ser EXATAMENTE igual
-    // ao valor do mappedBy na classe EducadorFisico.
     @ManyToOne
     @JoinColumn(name = "educador_fisico_id")
     private EducadorFisico educadorFisico;
