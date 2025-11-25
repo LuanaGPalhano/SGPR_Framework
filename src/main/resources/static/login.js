@@ -21,7 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         try {
-            // Faz a requisição ao Backend
             const response = await fetch('http://localhost:8080/api/auth/login', {
                 method: 'POST',
                 headers: {
@@ -60,7 +59,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
             } else {
-                // Se errou a senha ou usuário (401 Unauthorized)
                 botao.innerText = textoOriginal;
                 botao.disabled = false;
                 alert("Login ou senha incorretos. Tente novamente.");
