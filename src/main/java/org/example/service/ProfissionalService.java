@@ -26,11 +26,10 @@ public class ProfissionalService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    // --- Método de Cadastro (CORRIGIDO) ---
-    @Transactional // Importante para garantir que salve nas duas tabelas (pai e filho)
+    
+    @Transactional
     public ProfissionalResponse cadastrar(ProfissionalCadastroRequest dados) {
 
-        // DEBUG: Verificar se os dados chegaram
         System.out.println("--- TENTATIVA DE CADASTRO ---");
         System.out.println("Nome recebido: " + dados.nome());
         System.out.println("Email recebido: " + dados.email());
@@ -46,12 +45,11 @@ public class ProfissionalService {
 
         Profissional novoProfissional;
 
-        // Factory: Instancia a classe correta E preenche o campo específico da filha
+        // Factory: Instancia a classe correta e preenche o campo específico da filha
         switch (dados.tipoProfissional().toUpperCase()) {
             case "NUTRICIONISTA" -> {
                 Nutricionista n = new Nutricionista();
                 // Importante: Preencher o campo específico da tabela 'nutricionistas'
-                // Verifique se no seu Model o nome é 'setCrn' ou 'setCrnUf'
                 n.setCrn(dados.registroProfissional());
                 novoProfissional = n;
             }
@@ -77,13 +75,11 @@ public class ProfissionalService {
         novoProfissional.setRegistroProfissional(dados.registroProfissional());
         novoProfissional.setSenha(passwordEncoder.encode(dados.senha()));
 
-        // O JPA é inteligente: ele salva na tabela 'profissionais' E na tabela específica
         Profissional salvo = repository.save(novoProfissional);
 
         return new ProfissionalResponse(salvo);
     }
 
-    // --- Método de Associação (Ponto Fixo) ---
     @Transactional
     public void associarPaciente(Long profissionalId, Long pacienteId) {
         Profissional profissional = repository.findById(profissionalId)
