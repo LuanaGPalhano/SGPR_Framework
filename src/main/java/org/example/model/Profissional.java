@@ -9,8 +9,8 @@ import java.util.List;
 
 @Entity
 @Table(name = "profissionais")
-@Inheritance(strategy = InheritanceType.JOINED) // Define que teremos tabelas separadas
-@Getter @Setter @NoArgsConstructor // Lombok cria os getters/setters automaticamente
+@Inheritance(strategy = InheritanceType.JOINED) 
+@Getter @Setter @NoArgsConstructor 
 public abstract class Profissional {
 
     @Id
@@ -35,6 +35,5 @@ public abstract class Profissional {
     )
     private List<Paciente> pacientes = new ArrayList<>();
 
-    // Método abstrato que obriga os filhos a dizerem quem são
     public abstract String getTipoUsuario();
 }
