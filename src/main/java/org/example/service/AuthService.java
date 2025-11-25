@@ -45,7 +45,6 @@ public class AuthService {
             System.out.println("Senha confere? " + senhaBate);
 
             if (senhaBate) {
-                // SOLUÇÃO DO TIPO: Usa o método polimórfico (sem instanceof, sem proxy error)
                 String tipo = profissional.getTipoUsuario();
                 System.out.println("Login Sucesso! Tipo: " + tipo);
                 return Optional.of(new LoginResponse(profissional.getRegistroProfissional(), tipo));
