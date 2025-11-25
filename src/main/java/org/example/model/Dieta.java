@@ -1,9 +1,7 @@
 package org.example.model;
 
 import java.time.LocalDate;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import jakarta.persistence.CascadeType; // Importe Getter
 import jakarta.persistence.Entity;
@@ -47,6 +45,6 @@ public class Dieta {
     private Paciente paciente;
 
     @OneToMany(mappedBy = "dieta", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<Refeicao> refeicoes = new HashSet<>();
+    private List<Refeicao> refeicoes;
 
 }

@@ -1,5 +1,13 @@
 package org.example.DTO;
 
-public record DietaCadastroRequest(String nome, String descricao, Long pacienteId, Long nutricionistaId) {
+import java.time.LocalDate;
+import java.util.List;
 
-}
+public record DietaCadastroRequest(
+        LocalDate dataInicio,
+        LocalDate dataFim,
+        String objetivo,
+        Long nutricionistaId,
+        Long pacienteId,
+        List<RefeicaoRequest> entradaDieta
+) {}

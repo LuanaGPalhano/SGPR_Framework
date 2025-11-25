@@ -21,11 +21,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-/**
- * Serviço responsável pela lógica de negócio do chat nutricional,
- * gerenciando o fluxo da conversa, interagindo com repositórios
- * e delegando a geração de texto para o OpenAIIntegrationService.
- */
 @Service
 public class ChatService {
 
@@ -151,7 +146,8 @@ public class ChatService {
             conversationState.put(pacienteId, "ESCOLHER_REFEICAO");
             String refeicoesDisponiveis = dieta.getRefeicoes().stream()
                     .map(Refeicao::getNome)
-                    .filter(Objects::nonNull) // Garante que não há nomes nulos
+                    .filter(Objects::nonNull)
+                    .distinct()
                     .collect(Collectors.joining(", "));
             return "Perfeito! Para qual refeição você deseja um cardápio?<br>(Refeições Cadastradas: " + refeicoesDisponiveis + ")";
         } else {

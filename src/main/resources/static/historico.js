@@ -13,13 +13,10 @@ document.getElementById("formHistorico").addEventListener("submit", function(eve
     const historicoFamiliar = document.getElementById("historicoFamiliar").value;
     const outrasCondicoes = document.getElementById("outrasCondicoes").value;
     
-    // Para radio buttons, pegamos o valor do input que está "marcado" (checked)
-    const bebe = document.querySelector('input[name="bebe"]:checked').value;
-    const fuma = document.querySelector('input[name="fuma"]:checked').value;
+    const bebeValue = document.querySelector('input[name="bebe"]:checked').value;
+    const fumaValue = document.querySelector('input[name="fuma"]:checked').value;
 
-    // 2. Montagem do objeto JSON para envio
-    // A estrutura deve corresponder ao que sua API espera receber.
-    // Frequentemente, para relacionamentos, enviamos um objeto com o ID.
+   
     const historicoData = {
         estadoCivil,
         ocupacao,
@@ -28,15 +25,11 @@ document.getElementById("formHistorico").addEventListener("submit", function(eve
         suplementacao,
         historicoFamiliar,
         outrasCondicoes,
-        bebe,
-        fuma,
-        paciente: {
-            id: pacienteId 
-        }
+        isBebe: bebeValue === 'true',
+        isFuma: fumaValue === 'true'
     };
 
-    // 3. Envio dos dados para a API usando fetch
-    fetch("http://localhost:8080/api/historicos", {
+    fetch(`http://localhost:8080/api/pacientes/${pacienteId}/historico`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

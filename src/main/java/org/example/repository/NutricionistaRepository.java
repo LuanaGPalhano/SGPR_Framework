@@ -9,5 +9,5 @@ import java.util.Optional;
 
 @Repository
 public interface NutricionistaRepository extends JpaRepository<Nutricionista, Long> {
-    Optional<Nutricionista> findByCrnUf(String crnUf);}
+    Optional<Nutricionista> findByCrn(String Crn);}
 

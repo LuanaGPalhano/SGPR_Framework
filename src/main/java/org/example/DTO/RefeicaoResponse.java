@@ -1,10 +1,14 @@
 package org.example.DTO;
 
-import org.example.model.Refeicao;
+import java.time.LocalTime;
+import java.util.List;
 
-public record RefeicaoResponse(Long id, String nome, String descricao, Long dietaId) {
-    public RefeicaoResponse(Refeicao refeicao) {
-        this(refeicao.getId(), refeicao.getNome(), refeicao.getDescricao(), refeicao.getDieta().getId());
-    }
-    
+// Verifique se o seu record RefeicaoResponse está assim:
+public record RefeicaoResponse(
+        Long id,
+        String nome,
+        LocalTime horario,
+        String descricao,
+        List<ItemRefeicaoResponse> itens // O 5º argumento deve ser uma Lista de ItemRefeicaoResponse
+) {
 }

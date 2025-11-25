@@ -3,6 +3,7 @@ package org.example.service;
 import org.example.DTO.PacienteCadastroRequest;
 import org.example.DTO.PacienteResponse;
 import org.example.exception.DuplicateResourceException;
+import org.example.exception.ErrorResponse;
 import org.example.model.Paciente;
 import org.example.repository.PacienteRepository;
 import org.springframework.stereotype.Service;
@@ -34,5 +35,14 @@ public class PacienteService {
 
         Paciente pacienteSalvo = repository.save(novoPaciente);
         return new PacienteResponse(pacienteSalvo);
+    }
+    public PacienteResponse buscarPorCpf(String cpf) {
+
+        // 1. Usa o repositório para encontrar o paciente
+        Paciente paciente = repository.findByCpf(cpf)
+                .orElseThrow(() -> new ErrorResponse.ResourceNotFoundException("Paciente com CPF " + cpf + " não encontrado."));
+
+        // 2. Converte a Entidade para o DTO de Resposta
+        return new PacienteResponse(paciente);
     }
 }

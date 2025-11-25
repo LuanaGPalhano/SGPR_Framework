@@ -5,6 +5,23 @@ body {
     padding-top: 30px;
 }
 
+.centralizado {
+    background-color: #ffffff;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+#btnSair {
+    position: fixed;
+    top: 60px;
+    cursor: pointer;
+    width: 70px;
+}
+
 /*CABEÇALHO PAGINA PRINCIPAL*/
 header {
     margin-top: 20px;
@@ -25,7 +42,11 @@ header h1 {
     margin-bottom: 50px;
 }
 
-/*AREA DE ANOTACOES*/
+.ajuste {
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+}
 
 .blocodeanotacoes {
     background-color: #36B24E;
@@ -34,37 +55,26 @@ header h1 {
     width:700px;
     height:250px;
     margin-top: 20px;
+    overflow: auto;
 }
 
-/*LAYOUT*/
-.ajuste {
-    flex-direction: column;
-    display: flex;
-    align-items: center;
-}
-
-.pagina {
-    display: flex;
-    padding: 40px;
-    gap: 100px;
-}
-
-/*AREA DE TEXTO DO DIARIO*/
-textarea {
-    width: 90%;
-    height: 80%;
-    max-width: 500px;
-    min-width: 400px;
-    min-height: 450px;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 15px;
+.blocoDiario {
+    background-color: #E9FFF1;
+    opacity: 60%;
+    width: 95%;
+    height: 75px;
+    color: solid #36B24E;
+    margin: auto;
+    margin-bottom: 5px;
     border-radius: 15px;
-    resize: none;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    justify-content: center;
 }
 
-/*FORMA PADRAO DOS BOTOES*/
 button {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     border-radius: 15px;
     background-color: #36B24E;
     border: none;
@@ -72,59 +82,6 @@ button {
     width: 172px;
     height: 30px;
     cursor: pointer;
-    box-shadow: 2px 2px 3px rgba(137, 83, 83, 0.5);
-    text-shadow:1px 1px 3px rgba(137, 83, 83, 0.5);
-}
-
-/*AREA DE REFEIÇÕES E IMAGENS*/
-.adicionaRefeicoes {
-    flex-direction: column;
-    display: flex;
-    align-items: center;
-    font-size: 15px;
-    margin-bottom: 0px;
-    margin-top: 0px;
-}
-
-.icone {
-    margin-top: 0px;
-    width: 250px;
-    height: 250px;
-    background-color: #E9FFF1;
-    cursor: pointer;
-}
-
-
-/*ESTILIZAÇAO DE FORM*/
-input {
-    width: 205px;
-    height: 30px;
-    background-color:  #615f5f;
-    border: 2px;
-    border-radius: 5px;
-    padding-left: 15px;
-    box-shadow: 1px 1px 3px rgba(137,83,83,0.5);
-}
-
-input::placeholder {
-    color: #E9FFF1;
-}
-
-.bt1 {
-    width: 30px;
-    height: 30px;
-    font-size: 20px;
-}
-
-#listaRefeicoes {
-    background-color:#36B24E;
-    box-shadow: 1px 1px 3px rgba(137,83,83,0.5) inset;
-    padding: 10px;
-    margin-top: 0px;
-    font-size: 20px;
-    border-radius: 10px;
-}
-
-.areaRefeicoes {
-    margin-top: 20px;
+    box-shadow: 1px 1px 1px rgba(137, 83, 83, 0.5);
+    text-shadow:1px 1px 1px rgba(137, 83, 83, 0.5);
 }

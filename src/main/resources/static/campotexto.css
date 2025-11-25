@@ -1,0 +1,125 @@
+/*AREA DE ANOTACOES*/
+
+body {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background-color: #E9FFF1;
+    padding-top:30px;
+}
+
+/*LAYOUT*/
+.ajuste {
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+}
+
+.ajuste p {
+    font-size: 20px;
+    color: #615f5f;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.pagina {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    gap: 70px;
+}
+
+/*AREA DE TEXTO DO DIARIO*/
+textarea {
+    width: 90%;
+    height: 80%;
+    max-width: 500px;
+    min-width: 350px;
+    min-height: 450px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 15px;
+    border-radius: 15px;
+    resize: none;
+    padding: 15px;
+    border: 1px solid #565252;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08) inset;
+}
+
+/*FORMA PADRAO DOS BOTOES*/
+button {
+    margin-bottom: 20px;
+    border-radius: 15px;
+    background-color: #36B24E;
+    border: none;
+    color: #E9FFF1;
+    width: 172px;
+    height: 30px;
+    cursor: pointer;
+    box-shadow: 2px 2px 3px rgba(137, 83, 83, 0.5);
+    text-shadow:1px 1px 3px rgba(137, 83, 83, 0.5);
+}
+
+#salvarConteudo {
+    margin-top: 5px;
+    background-color: #209a51;
+}
+
+/*AREA DE REFEIÇÕES E IMAGENS*/
+.adicionaRefeicoes {
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    padding-top: 10px;
+    gap: 15px;
+}
+
+.icone {
+    margin-top: 0px;
+    width: 250px;
+    height: 250px;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+
+/*ESTILIZAÇAO DE FORM*/
+input {
+    width: 205px;
+    height: 30px;
+    background-color:  #615f5f;
+    border: 2px;
+    border-radius: 5px;
+    padding-left: 15px;
+    box-shadow: 1px 1px 3px rgba(137,83,83,0.5);
+}
+
+input::placeholder {
+    color: #E9FFF1;
+}
+
+.bt1 {
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+}
+
+#listaRefeicoes {
+    background-color:#36B24E;
+    box-shadow: 1px 1px 3px rgba(137,83,83,0.5) inset;
+    padding: 10px;
+    margin-top: 0px;
+    font-size: 20px;
+    border-radius: 10px;
+    width: 210px;
+}
+
+.areaRefeicoes {
+    margin-top: 20px;
+}

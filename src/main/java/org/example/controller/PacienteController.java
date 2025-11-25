@@ -24,4 +24,11 @@ public class PacienteController {
         PacienteResponse pacienteSalvo = pacienteService.cadastrar(dados);
         return ResponseEntity.status(HttpStatus.CREATED).body(pacienteSalvo);
     }
+    @GetMapping("/cpf/{cpf}")
+    public ResponseEntity<PacienteResponse> buscarPorCpf(@PathVariable String cpf) {
+        // Agora você precisa criar este método 'buscarPorCpf' no seu Service
+        PacienteResponse paciente = pacienteService.buscarPorCpf(cpf);
+        return ResponseEntity.ok(paciente);
+    }
+
 }

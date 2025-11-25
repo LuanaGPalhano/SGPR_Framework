@@ -1,31 +1,25 @@
 package org.example.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "nutricionistas")
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-public class Nutricionista {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String nome;
-    @Column(unique = true)
-    private String crnUf;
-    @Column(unique = true)
-    private String email;
-    private String senha;
+@Getter @Setter @NoArgsConstructor
+@PrimaryKeyJoinColumn(name = "id") // Garante a ligação com a tabela pai pelo ID
+public class Nutricionista extends Profissional {
 
-    public Nutricionista(String nome, String crnUf, String email, String senha) {
-        this.nome = nome;
-        this.crnUf = crnUf;
-        this.email = email;
-        this.senha = senha;
+    @Column(name = "crn_uf", unique = true)
+    private String crn;
+
+    @Override
+    public String getTipoUsuario() {
+        return "NUTRICIONISTA";
     }
 
+    // Relacionamentos específicos (Dieta, etc) continuam aqui...
+    @OneToMany(mappedBy = "nutricionista", cascade = CascadeType.ALL)
+    private java.util.List<Dieta> dietas;
 }

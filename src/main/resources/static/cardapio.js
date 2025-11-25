@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             if (!response.ok) {
-                 throw new Error(`Erro na comunicação com o servidor: ${response.statusText || response.status}`);
+                throw new Error(`Erro na comunicação com o servidor: ${response.statusText || response.status}`);
             }
 
             const data = await response.json();

@@ -24,13 +24,10 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-
         configuration.setAllowedOrigins(Arrays.asList("http://localhost:3000", "http://localhost:4200", "http://localhost:63342"));
-
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type", "x-auth-token"));
         configuration.setAllowCredentials(true);
-
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
         return source;
@@ -46,11 +43,15 @@ public class SecurityConfig {
                         .requestMatchers(
                                 "/api/auth/**",
                                 "/api/pacientes/cadastro**",
-                                "/api/nutricionistas/cadastro**",
+                                "/api/profissionais/cadastro**",
                                 "/diario/**",
                                 "/api/chat/**",
-                                "/api/favoritos/**"
+                                "/api/favoritos/**",
+                                "/planejamento",
+                                "/planejamento/**",
+                                "/api/pacientes/cpf/**"
                         ).permitAll()
+
                         .anyRequest().authenticated()
                 );
 

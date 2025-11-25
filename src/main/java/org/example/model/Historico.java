@@ -1,7 +1,6 @@
 package org.example.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -9,7 +8,6 @@ import lombok.NoArgsConstructor;
 @Table(name = "historico")
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 public class Historico {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,16 +19,13 @@ public class Historico {
     private String suplementacao;
     private String historicoFamiliar;
     private String outrasCondicoes;
-    private boolean isBebe;
-    private boolean isFuma;
+    private boolean bebe;
+    private boolean fuma;
 
     @OneToOne
     @JoinColumn(name = "paciente_id")
     private Paciente paciente;
 
-    @OneToOne
-    @JoinColumn(name = "avaliacao_id")
-    private Avaliacao avaliacao;
 
     public Historico(String estadoCivil, String ocupacao, String alergias, String medicamentos, String suplementacao, String historicoFamiliar, String outrasCondicoes, boolean isBebe, boolean isFuma) {
         this.estadoCivil = estadoCivil;
@@ -40,8 +35,8 @@ public class Historico {
         this.suplementacao = suplementacao;
         this.historicoFamiliar = historicoFamiliar;
         this.outrasCondicoes = outrasCondicoes;
-        this.isBebe = isBebe;
-        this.isFuma = isFuma;
+        this.bebe = isBebe;
+        this.fuma = isFuma;
     }
 
 

@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de Paciente</title>
-    <link rel="stylesheet" href="nutricionista.css">
+    <title>Cadastro de Profissional</title>
+    <link rel="stylesheet" href="cadastro-profissional.css">
     <style>
         body::before {
             content: "";
@@ -13,13 +13,12 @@
             left: 0%;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at left center, #E9FFF1, #006400); /* gradiente verde */
-            clip-path: circle(50% at 25% 50%); /* círculo no lado esquerdo, central vertical */
-            transform: translateY(-50%); /* ajusta para centralização exata */
+            background: radial-gradient(circle at left center, #E9FFF1, #006400);
+            clip-path: circle(50% at 25% 50%);
+            transform: translateY(-50%);
             z-index: -1;
         }
 
-        /* Layout do formulário */
         .container {
             position: relative;
             max-width: 500px;
@@ -33,15 +32,24 @@
 </head>
 <body>
 <div class="container">
-    <h2>Seja bem-vindo, Nutricionista! Vamos completar seu cadastro</h2>
-    <form id="formNutricionista">
+    <h2 id="tituloBoasVindas">Seja bem-vindo! Vamos completar seu cadastro profissional</h2>
+
+    <form id="formProfissional">
         <div class="form-content">
             <div class="inputs">
+
+                <label for="tipoProfissional">Sua Profissão</label>
+                <select id="tipoProfissional" name="tipoProfissional" class="form-control" style="margin-bottom: 15px; padding: 10px; width: 100%; border-radius: 5px; border: 1px solid #ccc;" onchange="atualizarLabelRegistro()">
+                    <option value="NUTRICIONISTA">Nutricionista</option>
+                    <option value="EDUCADOR_FISICO">Educador Físico</option>
+                    <option value="PSICOLOGO">Psicólogo</option>
+                </select>
+
                 <label for="nome">Nome</label>
                 <input type="text" id="nome" name="nome" required>
 
-                <label for="crnUf">CRN/UF</label>
-                <input type="text" id="crnUf" name="crnUf" required>
+                <label for="registroInput" id="labelRegistro">CRN</label>
+                <input type="text" id="registroInput" name="registroInput" required>
 
                 <label for="email">Email</label>
                 <input type="email" id="email" name="email" required>
@@ -54,7 +62,7 @@
             </div>
 
             <div class="upload">
-                <div class="foto-preview" id="fotoPreview">R</div>
+                <div class="foto-preview" id="fotoPreview">P</div>
                 <label for="foto" class="btn-upload">Escolha uma foto</label>
                 <input type="file" id="foto" name="foto" accept="image/*" hidden>
             </div>
@@ -67,6 +75,6 @@
     </form>
 </div>
 
-<script src="nutricionista.js"></script>
+<script src="cadastro-profissional.js"></script>
 </body>
 </html>

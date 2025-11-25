@@ -1,10 +1,17 @@
 package org.example.DTO;
 
-import org.example.model.Dieta;
 import java.time.LocalDate;
+import java.util.List;
 
-public record DietaResponse(Long id, LocalDate dataInicio, LocalDate dataFim, String objetivo) { 
-    public DietaResponse(Dieta dieta) {
-        this(dieta.getId(), dieta.getDataInicio(), dieta.getDataFim(), dieta.getObjetivo());
-    }
+// Este record agora aceita os 7 argumentos
+// que o seu DietaService está tentando passar
+public record DietaResponse(
+        Long id,
+        LocalDate dataInicio,
+        LocalDate dataFim,
+        String objetivo,
+        Long nutricionistaId, // Campo para o ID do nutricionista
+        Long pacienteId,      // Campo para o ID do paciente
+        List<RefeicaoResponse> refeicoes // A lista de refeições (que já corrigimos)
+) {
 }

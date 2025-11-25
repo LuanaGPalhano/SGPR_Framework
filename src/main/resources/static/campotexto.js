@@ -44,7 +44,7 @@ function abrirInput(){
 botaoImg.addEventListener('click', abrirInput);
 //TROCA A IMAGEM PADRAO DO SITE POR UMA ESCOLHIDA PELO USUÁRIO
 inputImg.addEventListener('change', function(){
-    arqEscolhido = inputImg.files[0];
+    let arqEscolhido = inputImg.files[0];
     if(arqEscolhido){
         const reader = new FileReader();
         reader.onload = function(e){
@@ -71,8 +71,9 @@ botaoSave.addEventListener("click", function(){
 
     const payload = {
         texto: texto,
-        refeicoes: Refeicoes.map(r => ({conjuntoRefeicoes: r})),
-        imgURL: imgURL
+        entradas: Refeicoes.map(r => ({descricao: r})),
+        imgURL: imgURL,
+        registroHorario: new Date().toISOString()
     };
 
     
@@ -84,13 +85,14 @@ botaoSave.addEventListener("click", function(){
             },
             body: JSON.stringify(payload)
         })
-        .then(res => {
-            if(res.ok) {
-                alert("Anotação salva com sucesso!");
-                window.close(); // fecha a janela
-            } else {
-                alert("Erro ao salvar a anotação!");
+        .then(res => res.json())
+        .then(anotacaoSalva => {
+            console.log("Resposta do backend:", anotacaoSalva); //teste
+            if(window.opener && !window.opener.closed) {
+                window.opener.adicionarBloco(anotacaoSalva);
             }
+            alert("Anotação salva com sucesso!");
+            window.close();
         })
         .catch(err => console.error(err)); 
     });

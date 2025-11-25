@@ -3,6 +3,9 @@ package org.example.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import java.time.LocalTime;
 import java.util.HashSet;
 import java.util.List; // <<< IMPORT NECESSÁRIO
@@ -13,6 +16,7 @@ import java.util.Set;
 @Table(name = "refeicoes")
 @Getter
 @Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Refeicao {
@@ -36,6 +40,8 @@ public class Refeicao {
     )
     private Set<ItemRefeicao> itensRefeicao = new HashSet<>(); // Inicialize a lista
 
+    @OneToMany(mappedBy = "refeicao", cascade = CascadeType.ALL)
+    private java.util.List<ItemRefeicao> itens;
 
     public Refeicao(String nome, LocalTime horario, String descricao, Dieta dieta) {
         this.nome = nome;
@@ -43,4 +49,5 @@ public class Refeicao {
         this.descricao = descricao;
         this.dieta = dieta;
     }
+
 }

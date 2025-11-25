@@ -1,5 +1,11 @@
 package org.example.DTO;
 
-public record RefeicaoRequest(String nome, String descricao, Long dietaId) {
-    
-}
+import java.time.LocalTime;
+import java.util.List;
+
+public record RefeicaoRequest(
+        String nome,
+        LocalTime horario,
+        String descricao,
+        List<ItemRefeicaoRequest> itens
+) {}
