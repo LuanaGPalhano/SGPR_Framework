@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const loginForm = document.getElementById('formLogin');
 
-    // ADICIONADO 'async' AQUI PARA CORRIGIR O ERRO
     loginForm.addEventListener('submit', async function(event) {
 
         event.preventDefault(); // Impede que a página recarregue sozinha
