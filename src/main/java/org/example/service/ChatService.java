@@ -7,7 +7,7 @@ import org.example.model.CardapioFavorito;
 import org.example.model.Paciente;
 import org.example.repository.CardapioFavoritoRepository;
 import org.example.repository.PacienteRepository;
-import org.example.service.chat.ChatState;
+import org.example.model.ChatState;
 import org.example.strategy.chat.ChatStrategy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
