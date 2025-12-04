@@ -27,7 +27,7 @@ public class AuthService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    @Transactional(readOnly = true) // Importante para garantir a sessão do Hibernate
+    @Transactional(readOnly = true)
     public Optional<LoginResponse> autenticar(LoginRequest request) {
         System.out.println("--- TENTATIVA DE LOGIN ---");
         System.out.println("Login recebido: " + request.login());
@@ -38,17 +38,21 @@ public class AuthService {
         if (profOpt.isPresent()) {
             Profissional profissional = profOpt.get();
             System.out.println("Profissional encontrado no Banco: " + profissional.getNome());
-            System.out.println("Senha no Banco (Hash): " + profissional.getSenha());
-            System.out.println("Senha enviada: " + request.senha());
 
             boolean senhaBate = passwordEncoder.matches(request.senha(), profissional.getSenha());
             System.out.println("Senha confere? " + senhaBate);
 
             if (senhaBate) {
-                // SOLUÇÃO DO TIPO: Usa o método polimórfico (sem instanceof, sem proxy error)
                 String tipo = profissional.getTipoUsuario();
                 System.out.println("Login Sucesso! Tipo: " + tipo);
-                return Optional.of(new LoginResponse(profissional.getRegistroProfissional(), tipo));
+
+                // --- ATUALIZAÇÃO AQUI ---
+                // Agora passamos o ID também
+                return Optional.of(new LoginResponse(
+                        profissional.getId(),
+                        profissional.getRegistroProfissional(),
+                        tipo
+                ));
             } else {
                 System.out.println("Falha: Senha incorreta para Profissional.");
             }
@@ -59,9 +63,19 @@ public class AuthService {
         // 2. Tenta buscar como PACIENTE
         Optional<Paciente> pacienteOpt = this.pacienteRepository.findByCpf(request.login());
         if (pacienteOpt.isPresent()) {
-            System.out.println("Paciente encontrado: " + pacienteOpt.get().getNome());
-            if (passwordEncoder.matches(request.senha(), pacienteOpt.get().getSenha())) {
-                return Optional.of(new LoginResponse(pacienteOpt.get().getCpf(), "PACIENTE"));
+            Paciente paciente = pacienteOpt.get();
+            System.out.println("Paciente encontrado: " + paciente.getNome());
+
+            if (passwordEncoder.matches(request.senha(), paciente.getSenha())) {
+                System.out.println("Login Sucesso! Tipo: PACIENTE");
+
+                // --- ATUALIZAÇÃO AQUI ---
+                // Passamos o ID do paciente
+                return Optional.of(new LoginResponse(
+                        paciente.getId(),
+                        paciente.getCpf(),
+                        "PACIENTE"
+                ));
             } else {
                 System.out.println("Falha: Senha incorreta para Paciente.");
             }

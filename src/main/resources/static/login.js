@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Verifica o tipo retornado pelo backend e manda para a página certa
 
                 if (data.tipo === 'PACIENTE') {
-                    window.location.href = 'ppaciente.html';
+                    window.location.href = 'TelaPrincipalPac.html';
                 }
                 else if (data.tipo === 'NUTRICIONISTA') {
                     window.location.href = 'TelaPrincipalNutri.html';

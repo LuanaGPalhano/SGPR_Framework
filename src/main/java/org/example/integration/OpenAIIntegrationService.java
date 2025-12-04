@@ -2,55 +2,75 @@ package org.example.integration;
 
 import com.theokanning.openai.completion.chat.ChatCompletionRequest;
 import com.theokanning.openai.completion.chat.ChatMessage;
-import com.theokanning.openai.service.OpenAiService; // Import da biblioteca
+import com.theokanning.openai.service.OpenAiService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.time.Duration;
 import java.util.Arrays;
-import java.util.List;
 
 @Service
 public class OpenAIIntegrationService {
 
-    private final OpenAiService openAiService; // Instância do serviço da biblioteca OpenAI
+    private final OpenAiService openAiService;
 
-    // Construtor: Recebe a chave da API do application.properties e inicializa o serviço
+    // Construtor: Inicializa o serviço com a API Key e Timeout
     public OpenAIIntegrationService(@Value("${openai.api.key}") String apiKey) {
-        this.openAiService = new OpenAiService(apiKey, Duration.ofSeconds(60)); // Timeout de 60s
+        // Timeout de 60s para garantir que respostas longas não quebrem
+        this.openAiService = new OpenAiService(apiKey, Duration.ofSeconds(60));
     }
-    public String gerarCardapioComIA(String dadosDaRefeicao) {
+
+    /**
+     * Método Genérico de Geração.
+     * Recebe o prompt já montado pela Estratégia (Nutri/Treino/Rotina)
+     * e garante que a IA responda no formato HTML correto para o Frontend.
+     *
+     * @param promptCompleto O texto contendo contexto, persona e pedido do usuário.
+     * @return A resposta da IA formatada em HTML.
+     */
+    public String gerarRespostaComIA(String promptCompleto) {
         try {
-            // A instrução do sistema agora reside DENTRO deste serviço especializado
-            String instrucaoSistema = "Você é um nutricionista virtual criativo e especialista em formatação HTML. Sua tarefa é criar um cardápio semanal (7 dias) variado para a refeição especificada nos dados do usuário.\n\n" +
-                    "REGRAS OBRIGATÓRIAS:\n" +
-                    "1. O cardápio deve se basear estritamente nos alimentos e quantidades originais da dieta do usuário.\n" +
-                    "2. Ao sugerir um alimento base (ex: frango, arroz), você DEVE incluir a sua quantidade original. Exemplo: 'Peito de frango grelhado (120g)'.\n\n" +
-                    "REGRAS DE FORMATAÇÃO HTML:\n" +
-                    "1. Use <br> para quebras de linha. Use <br><br> para parágrafos.\n" +
-                    "2. Use <strong> para títulos de dias da semana.\n" +
-                    "3. Comece com uma introdução curta e amigável.\n" +
-                    "4. Use um título principal como '<h3>🌙 Cardápio para o [Nome da Refeição]</h3>'.\n" +
-                    "5. Liste os 7 dias, cada um com suas sugestões.\n" +
-                    "6. Termine com um título '<h3>🥗 Dicas personalizadas:</h3>' e 3 dicas curtas.";
+            // --- INSTRUÇÃO DE SISTEMA (REGRAS GLOBAIS) ---
+            // Aqui definimos QUEBRAR o Markdown e USAR HTML.
+            // A "Persona" (Nutricionista, Personal) vem no 'promptCompleto', não aqui.
+            String systemInstruction = """
+                Você é o assistente inteligente do sistema SGPR.
+                
+                REGRAS DE FORMATAÇÃO ESTRITA (FRONTEND HTML):
+                1. Sua resposta será renderizada diretamente em um navegador web.
+                2. NÃO use formatação Markdown (como **, ##, -, ```). O frontend não lê Markdown.
+                3. USE EXCLUSIVAMENTE tags HTML para formatar o texto:
+                   - <b>texto</b> para negrito/destaque.
+                   - <br> para pular linha (use <br><br> para parágrafos).
+                   - <h3>Título</h3> para títulos de seções.
+                   - <ul><li>Item 1</li><li>Item 2</li></ul> para listas.
+                   - <i>texto</i> para itálico.
+                   - <hr> para linhas separadoras.
+                4. Use Emojis para tornar a leitura visual e agradável.
+                5. Seja direto, organizado e profissional.
+                
+                Siga a persona e o contexto definidos na mensagem do usuário.
+                """;
 
-            ChatMessage systemMessage = new ChatMessage("system", instrucaoSistema);
-            ChatMessage userMessage = new ChatMessage("user", dadosDaRefeicao);
+            // Monta as mensagens
+            ChatMessage systemMessage = new ChatMessage("system", systemInstruction);
+            ChatMessage userMessage = new ChatMessage("user", promptCompleto);
 
+            // Configura a requisição
             ChatCompletionRequest chatCompletionRequest = ChatCompletionRequest.builder()
-                    .model("gpt-4o-mini") // Modelo da OpenAI
+                    .model("gpt-4o-mini") // Modelo eficiente e rápido
                     .messages(Arrays.asList(systemMessage, userMessage))
-                    .maxTokens(1500)
-                    .temperature(0.7)
+                    .maxTokens(2000) // Limite de tamanho da resposta
+                    .temperature(0.7) // Criatividade equilibrada
                     .build();
 
-            // Chama a API da OpenAI usando o serviço da biblioteca
+            // Envia e retorna o conteúdo
             return openAiService.createChatCompletion(chatCompletionRequest)
                     .getChoices().get(0).getMessage().getContent();
 
         } catch (Exception e) {
             e.printStackTrace();
-            return "Desculpe, não consegui gerar o cardápio no momento devido a um problema com o assistente de IA.";
+            return "Desculpe, o assistente de IA está indisponível no momento. Por favor, tente novamente em alguns instantes. <br><small>Erro técnico: " + e.getMessage() + "</small>";
         }
     }
 }
