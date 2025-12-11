@@ -1,0 +1,143 @@
+/*BASE*/
+
+body {
+    background-color: #E9FFF1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+#btnSair {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background-color: #2e7d32;
+    color: #e9fff1;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    width: 70px;
+    height: 25px;
+    box-shadow: 2px 2px 3px rgba(137, 83, 83, 0.5);
+    text-shadow:1px 1px 3px rgba(137, 83, 83, 0.5);
+}
+
+.topo {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0;
+    gap: 0;
+}
+
+.central {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.containerDia{
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    max-height: 250px;
+    overflow-y: visible;
+    overflow-x: hidden;
+}
+
+.blocoRefeicao {
+    background-color: #ffffff;
+    width: 100%;
+    height: 75%;
+    margin-left: 2%;
+    border-radius: 15px;
+}
+
+h4 {
+  margin: 0 0 15px 0;
+  color: #2e7d32;
+  font-size: 18px;
+  font-weight: 600;
+  border-bottom: 2px solid #e9fff1;
+  padding-bottom: 5px;
+}
+
+/*CUSTOMIZAÇÃO DE BOTÕES*/
+
+.adicaoRefeicao {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    border-radius: 15px;
+    border: none;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);  
+    background-color: #2e7d32;
+    color:#E9FFF1;
+    cursor: pointer;
+}
+
+.adicaoRefeicao:hover {
+    background-color: #3a5f3c;
+    color: #e9fff1;
+}
+
+.btnSalvar {
+    background-color: #2e7d32;
+    color: #e9fff1;
+    border: none;
+    border-radius: 15px;
+    margin: auto;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    cursor: pointer;
+}
+
+.btnSalvar:hover {
+    background-color: #3a5f3c;
+    color: #e9fff1;
+}
+
+.btnExcluir {
+    background-color: transparent;
+    border: 2px solid #c3dacb;
+    border-radius: 15px;
+    color: #3a5f3c;
+    position: absolute;
+    cursor: pointer;
+    top: 5px;
+    right: 5px;
+}
+
+.btnExcluir:hover {
+    color: red;
+    border: 2px solid red;
+}
+
+.novaRefeicao {
+    border-radius: 10px;
+    border: none;
+    resize: none;
+    width: 100%;
+}
+
+.card {
+    border-bottom: 4px solid #c3dacb;
+    border-radius: 3px;
+    margin: auto;
+    position: relative;
+    display: inline-block;
+    padding: 4px 6px;
+}
+
+.semanaEscolha {
+    border-radius: 15px;
+    color: #3a5f3c;
+    height: 100%;
+    width: 20%;
+    background-color: #e9fff1;
+    border: 2px solid #3a5f3c;
+}

@@ -1,0 +1,145 @@
+/* Definição das variáveis de cor e fontes */
+:root {
+    --primary-color: #4CAF50; /* Verde principal */
+    --secondary-color: #337ab7; /* Azul para títulos */
+    --background-color: #f7f9fc; /* Fundo geral da página */
+    --container-bg: #fff; /* Fundo do container principal */
+    --item-bg: #f9f9f9; /* Fundo de cada item favorito */
+    --text-color: #333; /* Cor principal do texto */
+    --secondary-text-color: #777; /* Cor para textos secundários (data) */
+    --border-color: #ddd; /* Cor das bordas */
+    --shadow-color: rgba(0, 0, 0, 0.1); /* Cor da sombra */
+}
+
+/* Estilos gerais do corpo da página */
+body {
+    font-family: 'Arial', sans-serif; /* Fonte padrão */
+    background-color: var(--background-color);
+    margin: 0;
+    padding: 20px; /* Adiciona um respiro nas bordas */
+    color: var(--text-color);
+    line-height: 1.6; /* Melhora a legibilidade */
+}
+
+/* Container principal que centraliza o conteúdo */
+.container {
+    max-width: 800px;
+    margin: 20px auto; /* Centraliza na página */
+    background: var(--container-bg);
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px var(--shadow-color);
+}
+
+/* Cabeçalho da página de favoritos */
+.favoritos-header {
+    display: flex;
+    justify-content: space-between; /* Título à esquerda, botão à direita */
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+}
+
+.favoritos-header h1 {
+    margin: 0;
+    font-size: 1.5em; /* Tamanho do título principal */
+    color: var(--text-color);
+}
+
+/* Estilo do botão "Voltar" */
+.back-button {
+    padding: 8px 16px;
+    background-color: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease; /* Efeito suave ao passar o mouse */
+}
+
+.back-button:hover {
+    background-color: #45a049; /* Verde um pouco mais escuro */
+}
+
+/* Container onde os itens favoritos serão listados */
+#favoritos-container {
+    margin-top: 10px;
+}
+
+/* Estilo individual de cada item favorito */
+.favorito-item {
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    padding: 15px 20px;
+    margin-bottom: 15px;
+    background-color: var(--item-bg);
+}
+
+.favorito-item h4 {
+    margin-top: 0;
+    margin-bottom: 10px; /* Espaço após o nome da refeição */
+    color: var(--secondary-color); /* Azul para o nome da refeição */
+    font-size: 1.1em;
+}
+
+/* Estilo do texto da sugestão (renderizado como HTML) */
+.favorito-item p {
+    margin-bottom: 10px; /* Espaço antes da data */
+}
+
+/* Estilo da data "Salvo em:" */
+.favorito-item small {
+    color: var(--secondary-text-color);
+    font-size: 0.85em;
+    display: block; /* Garante que fique em sua própria linha */
+    margin-top: 5px;
+}
+
+/* Mensagem de "Carregando..." */
+#loading-message {
+    text-align: center;
+    color: var(--secondary-text-color);
+    padding: 30px 0;
+    font-style: italic;
+}
+
+/* Mensagem exibida quando não há favoritos */
+.no-favorites {
+    text-align: center;
+    color: var(--secondary-text-color);
+    padding: 30px 0;
+}
+/* No final do arquivo favoritos.css */
+
+.favorito-item {
+    position: relative; /* Necessário para posicionar o botão absoluto */
+    /* ... (outros estilos do favorito-item) */
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    padding: 15px 20px;
+    margin-bottom: 15px;
+    background-color: var(--item-bg);
+}
+
+.delete-button {
+    position: absolute; /* Posiciona o botão no canto */
+    top: 10px;
+    right: 10px;
+    background-color: #f44336; /* Vermelho */
+    color: white;
+    border: none;
+    border-radius: 50%; /* Faz o botão redondo */
+    width: 25px;
+    height: 25px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    line-height: 25px; /* Centraliza o X verticalmente */
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.delete-button:hover {
+    background-color: #d32f2f; /* Vermelho mais escuro */
+}

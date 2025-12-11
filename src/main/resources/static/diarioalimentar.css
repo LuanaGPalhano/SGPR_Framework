@@ -1,0 +1,87 @@
+/*CORPO DO SITE*/
+body {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background-color: #E9FFF1;
+    padding-top: 30px;
+}
+
+.centralizado {
+    background-color: #ffffff;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+#btnSair {
+    position: fixed;
+    top: 60px;
+    cursor: pointer;
+    width: 70px;
+}
+
+/*CABEÇALHO PAGINA PRINCIPAL*/
+header {
+    margin-top: 20px;
+    color: #565252;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 60px;
+    text-shadow: 1px 1px 3px rgba(137,83,83,0.5);
+    margin-bottom: 10px;
+}
+
+#data {
+    font-size: 20px;
+    color: #565252;
+    text-shadow: 1px 1px 3px rgba(137,83,83,0.5);
+    margin-bottom: 50px;
+}
+
+.ajuste {
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+}
+
+.blocodeanotacoes {
+    background-color: #36B24E;
+    border-radius: 10px;
+    box-shadow: 5px 5px 8px 0px rgba(137, 83, 83, 0.5) inset;
+    width:700px;
+    height:250px;
+    margin-top: 20px;
+    overflow: auto;
+}
+
+.blocoDiario {
+    background-color: #E9FFF1;
+    opacity: 60%;
+    width: 95%;
+    height: 75px;
+    color: solid #36B24E;
+    margin: auto;
+    margin-bottom: 5px;
+    border-radius: 15px;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+button {
+    margin-bottom: 10px;
+    border-radius: 15px;
+    background-color: #36B24E;
+    border: none;
+    color: #E9FFF1;
+    width: 172px;
+    height: 30px;
+    cursor: pointer;
+    box-shadow: 1px 1px 1px rgba(137, 83, 83, 0.5);
+    text-shadow:1px 1px 1px rgba(137, 83, 83, 0.5);
+}
