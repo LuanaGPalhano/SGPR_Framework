@@ -98,4 +98,16 @@ public class GlobalExceptionHandler {
         );
         return new ResponseEntity<>(errorResponse, HttpStatus.CONFLICT);
     }
+
+    @ExceptionHandler(ErrorResponse.ValidationException.class)
+    public ResponseEntity<ErrorResponse> handleValidationException(
+            ErrorResponse.ValidationException ex, WebRequest request) {
+                ErrorResponse errorResponse = new ErrorResponse(
+                        HttpStatus.BAD_REQUEST.value(),
+                        "Bad Request",
+                        ex.getMessage(),
+                        request.getDescription(false).substring(4)
+                         );
+                         return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
+                        }
 }

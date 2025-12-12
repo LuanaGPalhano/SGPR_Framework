@@ -14,10 +14,10 @@ public class DiarioFactory {
     public DiarioFactory(List<DiarioTemplate> listaTemplates) {
 
         for (DiarioTemplate t : listaTemplates) {
-            if (t instanceof DiarioDefault) templates.put(DiarioTipo.DEFAULT, t);
+            if (t instanceof DiarioTreino) templates.put(DiarioTipo.TREINO, t);
             else if (t instanceof DiarioTerapia) templates.put(DiarioTipo.TERAPIA, t);
             else if (t instanceof DiarioAlimentar) templates.put(DiarioTipo.ALIMENTAR, t);
-            else if (t instanceof DiarioTreino) templates.put(DiarioTipo.TREINO, t);
+            else if (t instanceof DiarioDefault) templates.put(DiarioTipo.DEFAULT, t);
         }
     }
 

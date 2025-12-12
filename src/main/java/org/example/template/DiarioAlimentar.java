@@ -16,7 +16,7 @@ public class DiarioAlimentar extends DiarioDefault{
     @Override
     protected void validar(DiarioBase diario, DiarioBaseRequest request){
             if(request.imgURL() == null || request.imgURL().isBlank()){
-                throw new ErrorResponse.UnauthorizedOperationException("O diário precisa de uma foto da refeição");
+                throw new ErrorResponse.ValidationException("O diário precisa de uma foto da refeição");
             }
     }
 }

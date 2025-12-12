@@ -15,13 +15,13 @@ public class DiarioTerapia extends DiarioDefault{
 
     @Override
     protected void validar(DiarioBase diario, DiarioBaseRequest request){
-            if(request.texto() == null || request.texto().isBlank()){
-                throw new ErrorResponse.UnauthorizedOperationException("O diário precisa que algo seja escrito");
-            }
-
             if(request.texto().length() < 50){
-                throw new ErrorResponse.UnauthorizedOperationException("O texto está muito curto. Por favor, escreva mais.");
+                throw new ErrorResponse.ValidationException("O texto está muito curto. Por favor, escreva mais.");
             }  
+            
+            if(request.texto() == null || request.texto().isBlank()){
+                throw new ErrorResponse.ValidationException("O diário precisa que algo seja escrito");
+            }
         
     }
 }
